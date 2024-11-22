@@ -14,6 +14,9 @@ function Header() {
                 <li>
                     <Link to="/sac">SAC</Link>
                 </li>
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
             </ul>
         </header>
     );
