@@ -22,7 +22,7 @@ function Login(){
             <form onSubmit={handleSubmit(enviarFormulario)}>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" {...register("email",{
+                    <input type="text" id="email" {...register("email",{
                         required: true,
                         minLength: 10,
                         pattern:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/                     
