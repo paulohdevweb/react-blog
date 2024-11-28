@@ -18,7 +18,6 @@ function App() {
         <Route path="/sac" element={<Sac />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
-
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </BrowserRouter>

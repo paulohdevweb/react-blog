@@ -5,17 +5,34 @@ import {
   removerUs,
   salvarUs,
 } from "../../firebase/firestore";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { cadastrar } from "../../firebase/authentication";
 
 function Signup() {
   const [usuarios, setUsuarios] = useState([]); //lista de usuarios
 
   const { handleSubmit, register, reset } = useForm();
+  const navigate = userNavigate();
 
-  async function salvarUsuario(dados) {
-    await salvarUs(dados);
-    reset();
+  async function salvarUsuario(email, senha, nome) {
+    try {
+      const usuario = await cadastrar(email, senha);
+      await salvarUs({
+        email,
+        senha,
+        nome,
+        authId: usuario.uid,
+      });
+      reset();
+      buscarUsuarios();
+      window.alert("Usuario Cadastrado.");
+      navigate("/login");
+    } catch (erro) {
+      window.alert("Algo deu Errado.");
+      console.error(erro);
+    }
   }
+
   async function buscarUsuarios() {
     const usuarios = await buscarUs();
     setUsuarios(usuarios);
